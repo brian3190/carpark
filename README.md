@@ -1,6 +1,10 @@
 # Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Sample WebApp for displaying Car Park Number
+TODO: 
+fix error displaying data from api
+set timer calling api every 60 secs
 
 ## Available Scripts
 
