@@ -3,9 +3,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Sample WebApp for displaying Car Park Number
 TODO: 
-fix error displaying data from api
-set timer calling api every 60 secs
-
+fix correct data from api
+##
+fix css
+##
+change setTimeout to setInterval
+##
+fix node server index.js
+##
+docker deploy
 ## Available Scripts
 
 In the project directory, you can run:

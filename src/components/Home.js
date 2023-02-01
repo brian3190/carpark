@@ -22,42 +22,43 @@ export class Home extends Component {
   render() {
     const { cp } = this.state;
     return (
-      <div>
+      <div className="container">
         <h1>Sample WEBAPP for CarPark</h1>
         <main>
           <div>
           <h2>SMALL</h2>
-          <h2>HIGHEST</h2>
-          <p>
-
-          </p>  
+          <h4>HIGHEST</h4>
+          <h5>HE12</h5>
+          
+          <h4>LOWEST</h4>
+          <h5>HE01,HE02,GE04</h5>  
         </div>
         <div >
           <h2>MEDIUM</h2>
-          <h2>HIGHEST</h2>
-          <p>
-
-          </p>  
+          <h4>HIGHEST</h4>
+          <h5>HE12</h5>
+          
+          <h4>LOWEST</h4>
+          <h5>HE01,HE02,GE04</h5> 
         </div>
         <div >
           <h2>BIG</h2>
-          <h2>HIGHEST</h2>
-          <p>
-
-          </p>  
+          <h4>HIGHEST</h4>
+          <h5>HE12</h5>
+          
+          <h4>LOWEST</h4>
+          <h5>HE01,HE02,GE04</h5> 
         </div>
         <div >
           <h2>LARGE</h2>
-          <h2>HIGHEST</h2>
-          <p>
-
-          </p>  
+          <h4>HIGHEST</h4>
+          <h5>HE12</h5>
+          
+          <h4>LOWEST</h4>
+          <h5>HE01,HE02,GE04</h5> 
         </div>
-      </main>
-        
-        <p>The <code>ClientApp</code> subdirectory is a standard React application based on the <code>create-react-app</code> template. If you open a command prompt in that directory, you can run <code>npm</code> commands such as <code>npm test</code> or <code>npm install</code>.</p>
+        </main>
       </div>
-      
     );
   }
 }
