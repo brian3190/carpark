@@ -7,8 +7,6 @@ fix correct data from api
 ##
 fix css
 ##
-change setTimeout to setInterval
-##
 fix node server index.js
 ##
 docker deploy

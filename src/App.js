@@ -16,17 +16,26 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    setTimeout(() => {
-      axios.get('https://api.data.gov.sg/v1/transport/carpark-availability')
+    axios.get('https://api.data.gov.sg/v1/transport/carpark-availability')
         .then(resp => {
-          console.log(resp);
+          //console.log(resp);
         this.setState({
           data: resp.data.items[0].carpark_data,
           loading: false
         })
       })
       .catch(console.error);
-    }, 1000);
+    setInterval(() => {
+      axios.get('https://api.data.gov.sg/v1/transport/carpark-availability')
+        .then(resp => {
+          //console.log(resp);
+        this.setState({
+          data: resp.data.items[0].carpark_data,
+          loading: false
+        })
+      })
+      .catch(console.error);
+    }, 60000);
   }
 
   static renderCarpark(data, small_high, small_low, med_high, med_low, big_high, big_low, large_high, large_low,
