@@ -14,7 +14,7 @@ export default class App extends Component {
   constructor(props) {
     let data;
     super(props);
-    this.processData(data) = this.processData(data).bind(this);
+    //this.processData(data) = this.processData(data).bind(this);
     this.state = {
       data: [], loading: true, small_high_avail: 50, small_low_avail: 0, med_high_avail: 0, med_low_avail: 0, big_high_avail: 0, big_low: 0, large_high: 0, large_low: 0,
       small_carpark: [], medium_carpark: [], big_carpark: [], large_carpark: [], s_highest: [], s_lowest: [], m_highest: [], m_lowest: [], b_highest: [], b_lowest: []
@@ -25,6 +25,8 @@ export default class App extends Component {
     this.large_carpark = [];
     this.b_highest = {};
     this.b_lowest = {};
+    this.m_highest = {};
+    this.m_lowest = {};
     this.highest = 0;
     this.lowest = 0;
     
@@ -61,13 +63,13 @@ export default class App extends Component {
     for (let i = 0; i < data.length; i++){
       //can refactor to switch
       if (data[i].carpark_info[0].total_lots < 100){
-        small_carpark.push(data[i])  
+        this.small_carpark.push(data[i])  
       } else if (100 < data[i].carpark_info[0].total_lots < 300) {
-        medium_carpark.push(data[i])
+        this.medium_carpark.push(data[i])
       } else if (300 < data[i].carpark_info[0].total_lots < 400) {
-        big_carpark.push(data[i])
+        this.big_carpark.push(data[i])
       } else if (data[i].carpark_info[0].total_lots > 400) {
-        large_carpark.push(data[i])
+        this.large_carpark.push(data[i])
       };
     }
   }
@@ -75,7 +77,7 @@ export default class App extends Component {
   // Generic Find highest
   static findHighest(carpark, highest, generic_highest) {
     for (let i = 0; i < carpark.length; i++) {
-      let num = parseint(carpark[i].lots_available);
+      let num = parseInt(carpark[i].lots_available);
       if (num > highest) {
         highest = num;
         generic_highest = carpark[i];
@@ -101,35 +103,35 @@ export default class App extends Component {
       <div>
         <div >
           <h2>SMALL</h2>
-          <h4>HIGHEST ({small_high_avail} lots available)</h4>
+          <h4>HIGHEST ({this.small_high_avail} lots available)</h4>
           <div>
             Sample test data obtained from API: {data.length} 
           </div>
-          <h4>LOWEST ({small_low_avail} lots available)</h4>
+          <h4>LOWEST ({this.small_low_avail} lots available)</h4>
           <div>
             Sample data test obtained from API: {data[0].carpark_number}
           </div> 
         </div>
         <div >
           <h2>MEDIUM</h2>
-          <h4>HIGHEST ({med_high_avail} lots available)</h4>
+          <h4>HIGHEST ({this.med_high_avail} lots available)</h4>
           <div>
-            {m_highest.carpark_number}
+            {data[1].carpark_number}
           </div>
-          <h4>LOWEST ({med_low_avail} lots available)</h4>
+          <h4>LOWEST ({this.med_low_avail} lots available)</h4>
           <div>
-            {m_lowest.carpark_number}
+            {data[1].carpark_number}
           </div>
         </div>
         <div>
           <h2>BIG</h2>
           <h4>HIGHEST ({data.length} lots available)</h4>
           <div>
-            {m_highest.carpark_number}
+            {data[2].carpark_number}
           </div>
           <h4>LOWEST ({data.length} lots available)</h4>
           <div>
-            {m_highest.carpark_number}
+            {data[2].carpark_number}
           </div>
         </div>
         <div>
