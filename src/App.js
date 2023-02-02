@@ -9,15 +9,25 @@ import './App.css';
 export default class App extends Component {
   //small_high_avail, small_low_avail, med_high_avail, med_low_avail etc = carpark lots available for highest and lowest
   //small_carpark, medium_carpark etc = array of carpark obtained from filtered data
-  //s_highest, s_lowest, m_highest, m_lowest etc = 
+  //s_highest, s_lowest, m_highest, m_lowest etc = highest available carpark and lowest available carpark
+  //lowest, highest = temp value store for lowest and highest value for generic comparison function findHighest and findLowest
   constructor(props) {
+    let data;
     super(props);
+    this.processData(data) = this.processData(data).bind(this);
     this.state = {
       data: [], loading: true, small_high_avail: 50, small_low_avail: 0, med_high_avail: 0, med_low_avail: 0, big_high_avail: 0, big_low: 0, large_high: 0, large_low: 0,
       small_carpark: [], medium_carpark: [], big_carpark: [], large_carpark: [], s_highest: [], s_lowest: [], m_highest: [], m_lowest: [], b_highest: [], b_lowest: []
     }
     this.small_carpark = [];
-
+    this.medium_carpark = [];
+    this.big_carpark = [];
+    this.large_carpark = [];
+    this.b_highest = {};
+    this.b_lowest = {};
+    this.highest = 0;
+    this.lowest = 0;
+    
   };
 
   //Array initialization
@@ -51,28 +61,36 @@ export default class App extends Component {
     for (let i = 0; i < data.length; i++){
       //can refactor to switch
       if (data[i].carpark_info[0].total_lots < 100){
-        small_carpark.push(data[i].carpark_number)  
+        small_carpark.push(data[i])  
       } else if (100 < data[i].carpark_info[0].total_lots < 300) {
-        medium_carpark.push(data[i].carpark_number)
+        medium_carpark.push(data[i])
       } else if (300 < data[i].carpark_info[0].total_lots < 400) {
-        big_carpark.push(data[i].carpark_number)
+        big_carpark.push(data[i])
       } else if (data[i].carpark_info[0].total_lots > 400) {
-        large_carpark.push(data[i].carpark_number)
+        large_carpark.push(data[i])
       };
     }
   }
   
   // Generic Find highest
-  static findHighest(carpark) {
+  static findHighest(carpark, highest, generic_highest) {
     for (let i = 0; i < carpark.length; i++) {
-      
+      let num = parseint(carpark[i].lots_available);
+      if (num > highest) {
+        highest = num;
+        generic_highest = carpark[i];
+      }
     }
   }
 
   // Generic Find lowest
-  static findLowest(carpark) {
+  static findLowest(carpark, lowest, generic_lowest) {
     for (let i = 0; i < carpark.length; i++) {
-
+      let num = parseInt(carpark[i].lots_available);
+      if (num < lowest) {
+        lowest = num;
+        generic_lowest = carpark[i];
+      }
     }
   }
 
@@ -85,33 +103,33 @@ export default class App extends Component {
           <h2>SMALL</h2>
           <h4>HIGHEST ({small_high_avail} lots available)</h4>
           <div>
-            Sample data obtained from API: {data.length} 
+            Sample test data obtained from API: {data.length} 
           </div>
           <h4>LOWEST ({small_low_avail} lots available)</h4>
           <div>
-            Sample data obtained from API: {data[0].carpark_number}
+            Sample data test obtained from API: {data[0].carpark_number}
           </div> 
         </div>
         <div >
           <h2>MEDIUM</h2>
           <h4>HIGHEST ({med_high_avail} lots available)</h4>
           <div>
-            {med}
+            {m_highest.carpark_number}
           </div>
           <h4>LOWEST ({med_low_avail} lots available)</h4>
           <div>
-            {data.length}
+            {m_lowest.carpark_number}
           </div>
         </div>
         <div>
           <h2>BIG</h2>
           <h4>HIGHEST ({data.length} lots available)</h4>
           <div>
-            {data.length}
+            {m_highest.carpark_number}
           </div>
           <h4>LOWEST ({data.length} lots available)</h4>
           <div>
-            {data.length}
+            {m_highest.carpark_number}
           </div>
         </div>
         <div>
