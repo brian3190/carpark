@@ -12,7 +12,7 @@ export default class App extends Component {
   //s_highest, s_lowest, m_highest, m_lowest etc = highest available carpark and lowest available carpark
   //lowest, highest = temp value store for lowest and highest value for generic comparison function findHighest and findLowest
   constructor(props) {
-    let data;
+    //let data;
     super(props);
     //this.processData(data) = this.processData(data).bind(this);
     this.state = {
